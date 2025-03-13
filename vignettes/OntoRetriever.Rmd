@@ -1,0 +1,89 @@
+---
+title: "Introduction to OntoRetriever"
+author: "Zhigang Wang"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to HPOretriever}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+<style type="text/css">
+pre > code.sourceCode {
+  white-space: pre-wrap; /* Wraps code */
+  word-wrap: break-word; /* Allows long words to break */
+  position: relative;
+  overflow: auto; /* Adds scrollbars if content overflows */
+  font-size: 1.02em; /* Increases the font size */
+  background-color: #f8f9fa; /* Sets a lighter background color */
+  padding: 10px; /* Adds padding for better readability */
+  border-radius: 4px; /* Adds rounded corners to the code block */
+}
+
+pre > code.sourceCode > span {
+  line-height: 1.5; /* Increases line height for better readability */
+  color: inherit; /* Ensures text color is inherited */
+  text-decoration: inherit; /* Ensures text decoration is inherited */
+}
+
+pre > code.sourceCode > span:empty {
+  height: 1.2em;
+}
+
+.sourceCode {
+  overflow: visible;
+}
+
+div.sourceCode {
+  margin: 1em 0;
+}
+
+pre.sourceCode {
+  margin: 0;
+  white-space: pre-wrap; /* Ensures code wraps within the box */
+  background-color: #f8f9fa; /* Applies a lighter background to pre */
+  font-size: 1.02em; /* Matches the font size increase */
+}
+
+@media screen {
+  div.sourceCode {
+    overflow: auto; /* Adds scrollbars for better visibility */
+  }
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r, echo=T}
+reticulate::use_virtualenv(virtualenv='r-reticulate')
+library(reticulate)
+library(OntoRetriever)
+re = retrieve_similar_terms("irritability", onto ="HPO", k = 3)
+print(re)
+
+re = retrieve_similar_terms("irritability", onto ="OAE", k = 3)
+print(re)
+
+retrieve_similar_terms("tired", onto ="HPO", k = 3)
+retrieve_similar_terms("swelling at the injection site", onto ="OAE", k = 3)
+
+re = map_text_to_hpo("The most commonly reported reactions were pain at the injection site and headache.", k = 3)
+print(re)
+
+text = "The most commonly reported solicited local and systemic adverse reactions in pregnant
+individuals (≥10%) were pain at the injection site (40.6%), headache (31.0%), muscle pain
+(26.5%), and nausea (20.0%). (6.1) • The most commonly reported solicited local and systemic
+adverse reactions in individuals 60 years of age and older (≥10%) were fatigue (15.5%),
+headache (12.8%), pain at the injection site (10.5%), and muscle pain (10.1%). "
+re = map_text_to_hpo(ae_text=text, k = 1)
+print(re)
+re = map_text_to_oae(ae_text=text, k = 1)
+print(re)
+```
+

@@ -1,0 +1,18 @@
+Package: OntoRetriever
+Type: Package
+Title: Retrieve Similar Adverse Event Terms from the Ontologies
+Version: 0.1.5
+Author: Zhigang Wang
+Maintainer: Zhigang Wang <wangzg.pumc@gmail.com>
+Description: A package to retrieve similar adverse event terms from the HPO and OAE ontology using text embeddings and the FAISS library.
+Depends: R (>= 4.0.0)
+Imports: 
+    reticulate
+Suggests:
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3
