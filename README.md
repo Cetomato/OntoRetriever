@@ -58,13 +58,21 @@ print(re)
 #> 5 headache HP:0002076            Migraine 9.199228e+01
 #> 6 headache HP:0012459     Hypnic headache 1.037697e+02
 ```
-text = "The most commonly reported solicited local and systemic adverse reactions in pregnant
+
+ae_text = "The most commonly reported solicited local and systemic adverse reactions in pregnant
 individuals (≥10%) were pain at the injection site (40.6%), headache (31.0%), muscle pain
 (26.5%), and nausea (20.0%). (6.1) • The most commonly reported solicited local and systemic
 adverse reactions in individuals 60 years of age and older (≥10%) were fatigue (15.5%),
 headache (12.8%), pain at the injection site (10.5%), and muscle pain (10.1%). "
 
-re = map_text_to_oae(ae_text=text, k = 1)
+re = map_text_to_oae(ae_text=ae_text, k = 1)
 print(re)
-
+```r
+                        word          ID                   Name     Distance
+1                    fatigue OAE:0000034             fatigue AE 5.576983e-05
+2                     nausea OAE:0000600              nausea AE 9.830497e-05
+3                muscle pain OAE:0000383         muscle ache AE 3.491961e+01
+4 pain at the injection site OAE:0000369 injection-site pain AE 2.787290e+01
+5                   headache OAE:0000377            headache AE 4.732348e-05
+```
 
