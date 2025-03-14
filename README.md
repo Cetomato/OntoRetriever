@@ -15,6 +15,7 @@ remotes::install_github("Cetomato/OntoRetriever")
 library(OntoRetriever)
 
 re = retrieve_similar_terms("irritability", onto ="HPO", k = 3)
+
 print(re)
 ```r
 #>           ID               Name    Distance
@@ -48,6 +49,7 @@ retrieve_similar_terms("swelling at the injection site", onto ="OAE", k = 3)
 #> 3 OAE:0006827          injection site edema AE 65.67982
 ```
 re = map_text_to_hpo("The most commonly reported reactions were pain at the injection site and headache.", k = 3)
+
 print(re)
 ```r
 #>       word         ID                Name     Distance
@@ -66,6 +68,7 @@ adverse reactions in individuals 60 years of age and older (≥10%) were fatigue
 headache (12.8%), pain at the injection site (10.5%), and muscle pain (10.1%). "
 
 re = map_text_to_oae(ae_text=ae_text, k = 1)
+
 print(re)
 ```r
                         word          ID                   Name     Distance
